@@ -23,7 +23,9 @@ class ProductFormController extends State<ProductFormView> {
   @override
   Widget build(BuildContext context) => widget.build(context, this);
 
-  bool get isEditMode => widget.item != null;
+  bool get isEditMode {
+    return widget.item != null;
+  }
 
   String? productName;
   double? price;
