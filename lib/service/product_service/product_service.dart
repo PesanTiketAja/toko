@@ -45,7 +45,7 @@ class ProductService {
   }
 
   Future updateProduct({
-    required String id,
+    required int id,
     required String productName,
     required double price,
     required String category,

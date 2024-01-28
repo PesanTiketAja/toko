@@ -9,7 +9,7 @@ class ProductFormController extends State<ProductFormView> {
   void initState() {
     instance = this;
     if (isEditMode) {
-      productName = widget.item!["produkname"];
+      productName = widget.item!["product_name"];
       price = double.parse(widget.item!["price"].toString());
       category = widget.item!["category"];
       description = widget.item!["description"];
@@ -31,7 +31,7 @@ class ProductFormController extends State<ProductFormView> {
   String? description;
 
   doSave() async {
-      if (isEditMode) {
+    if (isEditMode) {
       await ProductService().updateProduct(
         id: widget.item!["id"],
         productName: productName!,
