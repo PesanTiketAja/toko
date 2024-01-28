@@ -8,8 +8,8 @@ class AuthService {
   }) async {
     try {
       var response = await Dio().post(
-        // "http://10.0.2.2/toko/public/api/login",
-        "http://localhost/toko/public/api/login",
+        // "http://10.0.2.2/tokolaravel/public/api/login",
+        "http://localhost/tokolaravel/public/api/login",
         options: Options(
           headers: {
             "Content-Type": "application/json",

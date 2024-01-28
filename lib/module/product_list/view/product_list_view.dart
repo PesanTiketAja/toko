@@ -31,8 +31,14 @@ class ProductListView extends StatefulWidget {
               leading: CircleAvatar(
                 backgroundColor: Colors.grey[200],
               ),
-              title: Text(item["product_name"] ?? "Product Name Not Available"),
-              subtitle: Text("${item["price"] ?? "Price Not Available"}"),
+              title: Text(item["product_name"]),
+              subtitle: Text("${item["price"]}"),
+              onTap: () => {
+                Get.to(ProductFormView(
+                  item: item,
+                )),
+                controller.getProducts()
+              },
             ),
           );
         },
@@ -41,6 +47,7 @@ class ProductListView extends StatefulWidget {
         child: const Icon(Icons.add),
         onPressed: () async {
           await Get.to(ProductFormView());
+          controller.getProducts();
         },
       ),
     );

@@ -4,8 +4,8 @@ class ProductService {
   Future<List> getProduct() async {
     // dio_get
     var response = await Dio().get(
-      "http://10.0.2.2/toko/public/api/products",
-      // "http://localhost/toko/public/api/products",
+      // "http://10.0.2.2/tokolaravel/public/api/products",
+      "http://localhost/tokolaravel/public/api/products",
       options: Options(
         headers: {
           "Content-Type": "application/json",
@@ -24,8 +24,8 @@ class ProductService {
     required String description,
   }) async {
     var response = await Dio().post(
-      // "http://10.0.2.2/toko/public/api/products",
-      "http://localhost/toko/public/api/products",
+      // "http://10.0.2.2/tokolaravel/public/api/products",
+      "http://localhost/tokolaravel/public/api/products",
       options: Options(
         headers: {
           "Content-Type": "application/json",
@@ -51,8 +51,8 @@ class ProductService {
     required String description,
   }) async {
     var response = await Dio().put(
-      // "http://10.0.2.2/toko/public/api/products/$id",
-      "http://localhost/toko/public/api/products/$id",
+      // "http://10.0.2.2/tokolaravel/public/api/products/$id",
+      "http://localhost/tokolaravel/public/api/products/$id",
       options: Options(
         headers: {
           "Content-Type": "application/json",
@@ -72,8 +72,8 @@ class ProductService {
 
   Future deleteProduct(int id) async {
     var response = await Dio().delete(
-      // "http://10.0.2.2/toko/public/api/products/$id",
-      "http://localhost/toko/public/api/products/$id",
+      // "http://10.0.2.2/tokolaravel/public/api/products/$id",
+      "http://localhost/tokolaravel/public/api/products/$id",
       options: Options(
         headers: {
           "Content-Type": "application/json",
@@ -86,8 +86,8 @@ class ProductService {
 
   Future getProductByID(int id) async {
     var response = await Dio().get(
-      // "http://10.0.2.2/toko/public/api/products/$id",
-      "http://localhost/toko/public/api/products/$id",
+      // "http://10.0.2.2/tokolaravel/public/api/products/$id",
+      "http://localhost/tokolaravel/public/api/products/$id",
       options: Options(
         headers: {
           "Content-Type": "application/json",
