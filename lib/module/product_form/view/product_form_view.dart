@@ -7,7 +7,6 @@ class ProductFormView extends StatefulWidget {
     Key? key,
     this.item,
   }) : super(key: key);
-  
 
   Widget build(context, ProductFormController controller) {
     controller.view = this;
@@ -41,16 +40,12 @@ class ProductFormView extends StatefulWidget {
               label: "Kategori Produk",
               validator: Validator.required,
               items: [
-                {"label": "Bahan Baku", 
-                "value": "Bahan Baku"
-                },
-                {"label": "Sembako", 
-                "value": "Sembako"
-                },
+                {"label": "Bahan Baku", "value": "Bahan Baku"},
+                {"label": "Sembako", "value": "Sembako"},
               ],
-              value: null,
+              value: controller.category,
               onChanged: (value, label) {
-                controller.category = label;
+                controller.category = value;
               },
             ),
             QMemoField(
@@ -72,7 +67,5 @@ class ProductFormView extends StatefulWidget {
   }
 
   // @Override
-  State<ProductFormView>createState() => ProductFormController();
+  State<ProductFormView> createState() => ProductFormController();
 }
-
-
