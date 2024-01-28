@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hyper_ui/core.dart';
+import '../controller/product_list_controller.dart';
 
 class ProductListView extends StatefulWidget {
   const ProductListView({Key? key}) : super(key: key);
@@ -37,7 +38,7 @@ class ProductListView extends StatefulWidget {
                 await Get.to(ProductFormView(
                   item: item,
                 )),
-                controller.getProducts()
+                controller.getProducts(),
               },
             ),
           );

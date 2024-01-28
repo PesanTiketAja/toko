@@ -41,6 +41,7 @@ class ProductService {
     );
     // ignore: unused_local_variable
     Map obj = response.data;
+    return obj['data']["id"];
   }
 
   Future updateProduct({
@@ -68,6 +69,7 @@ class ProductService {
     );
     // ignore: unused_local_variable
     Map obj = response.data;
+    return obj['data']["id"];
   }
 
   Future deleteProduct(int id) async {

@@ -8,6 +8,12 @@ class ProductFormController extends State<ProductFormView> {
   @override
   void initState() {
     instance = this;
+    if (isEditMode) {
+      productName = widget.item!["produkname"];
+      price = double.parse(widget.item!["price"].toString());
+      category = widget.item!["category"];
+      description = widget.item!["description"];
+    }
     super.initState();
   }
 
@@ -17,18 +23,30 @@ class ProductFormController extends State<ProductFormView> {
   @override
   Widget build(BuildContext context) => widget.build(context, this);
 
+  bool get isEditMode => widget.item != null;
+
   String? productName;
   double? price;
   String? category;
   String? description;
 
   doSave() async {
-    ProductService().insertProduct(
-      productName: productName!,
-      price: price!,
-      category: category!,
-      description: description!,
-    );
+      if (isEditMode) {
+      await ProductService().updateProduct(
+        id: widget.item!["id"],
+        productName: productName!,
+        price: price!,
+        category: category!,
+        description: description!,
+      );
+    } else {
+      await ProductService().insertProduct(
+        productName: productName!,
+        price: price!,
+        category: category!,
+        description: description!,
+      );
+    }
     Get.back();
   }
 }

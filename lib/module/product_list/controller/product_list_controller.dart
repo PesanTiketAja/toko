@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hyper_ui/core.dart';
+import 'package:hyper_ui/service/product_service/product_service.dart';
+import '../view/product_list_view.dart';
 
 class ProductListController extends State<ProductListView> {
   static late ProductListController instance;

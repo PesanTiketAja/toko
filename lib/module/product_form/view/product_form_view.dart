@@ -7,19 +7,10 @@ class ProductFormView extends StatefulWidget {
     Key? key,
     this.item,
   }) : super(key: key);
+  
 
-  @override
-  _ProductFormViewState createState() => _ProductFormViewState();
-
-  build(BuildContext context, ProductFormController productFormController) {}
-}
-
-class _ProductFormViewState extends State<ProductFormView> {
-  late ProductFormController controller;
-
-  @override
-  Widget build(BuildContext context) {
-    controller = ProductFormController();
+  Widget build(context, ProductFormController controller) {
+    controller.view = this;
 
     return Scaffold(
       appBar: AppBar(
@@ -50,8 +41,12 @@ class _ProductFormViewState extends State<ProductFormView> {
               label: "Kategori Produk",
               validator: Validator.required,
               items: [
-                {"label": "Bahan Baku", "value": "Bahan Baku"},
-                {"label": "Sembako", "value": "Sembako"},
+                {"label": "Bahan Baku", 
+                "value": "Bahan Baku"
+                },
+                {"label": "Sembako", 
+                "value": "Sembako"
+                },
               ],
               value: null,
               onChanged: (value, label) {
@@ -61,7 +56,7 @@ class _ProductFormViewState extends State<ProductFormView> {
             QMemoField(
               label: "Deskripsi Produk",
               validator: Validator.required,
-              value: null,
+              value: controller.description,
               onChanged: (value) {
                 controller.description = value;
               },
@@ -70,9 +65,14 @@ class _ProductFormViewState extends State<ProductFormView> {
         ),
       ),
       bottomNavigationBar: QActionButton(
-        label: "Tambah Produk",
+        label: "save",
         onPressed: () => controller.doSave(),
       ),
     );
   }
+
+  // @Override
+  State<ProductFormView>createState() => ProductFormController();
 }
+
+
