@@ -25,4 +25,9 @@ class ProductListController extends State<ProductListView> {
     product = await ProductService().getProduct();
     setState(() {});
   }
+
+  doDelete(int id) async {
+    await ProductService().deleteProduct(id);
+    getProducts();
+  }
 }

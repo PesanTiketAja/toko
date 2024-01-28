@@ -34,6 +34,13 @@ class ProductListView extends StatefulWidget {
               ),
               title: Text(item["product_name"]),
               subtitle: Text("${item["price"]}"),
+              trailing: IconButton(
+                onPressed: () async => controller.doDelete(item["id"]),
+                icon: const Icon(
+                  Icons.delete,
+                  size: 24.0,
+                ),
+              ),
               onTap: () async => {
                 await Get.to(ProductFormView(
                   item: item,
