@@ -33,8 +33,8 @@ class ProductListView extends StatefulWidget {
               ),
               title: Text(item["product_name"]),
               subtitle: Text("${item["price"]}"),
-              onTap: () => {
-                Get.to(ProductFormView(
+              onTap: () async => {
+                await Get.to(ProductFormView(
                   item: item,
                 )),
                 controller.getProducts()
