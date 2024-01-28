@@ -1,27 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:hyper_ui/core.dart';
-import '../controller/login_controller.dart'; // Import RegisterView
+import '../controller/register_controller.dart';
 
-class LoginView extends StatefulWidget {
-  const LoginView({Key? key}) : super(key: key);
+class RegisterView extends StatefulWidget {
+  const RegisterView({Key? key}) : super(key: key);
 
-  Widget build(context, LoginController controller) {
+  Widget build(context, RegisterController controller) {
     controller.view = this;
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Login"),
-        actions: [
-          // Tambahkan tombol untuk navigasi ke halaman register
-          IconButton(
-            icon: Icon(Icons.person_add),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => RegisterView()),
-              );
-            },
-          ),
-        ],
+        title: const Text("Registrasi"),
+        actions: const [],
       ),
       body: Container(
         child: Container(
@@ -31,6 +20,14 @@ class LoginView extends StatefulWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                QTextField(
+                  label: "Name",
+                  validator: Validator.name,
+                  // suffixIcon: Icons.name,
+                  onChanged: (value) {
+                    controller.name = value;
+                  },
+                ),
                 QTextField(
                   label: "Email",
                   validator: Validator.email,
@@ -49,8 +46,8 @@ class LoginView extends StatefulWidget {
                   },
                 ),
                 QButton(
-                  label: "Masuk",
-                  onPressed: () => controller.doLogin(),
+                  label: "Register",
+                  onPressed: () => controller.doRegister(),
                 ),
               ],
             ),
@@ -61,6 +58,6 @@ class LoginView extends StatefulWidget {
   }
 
   @override
-  State<LoginView> createState() => LoginController();
+  State<RegisterView> createState() => RegisterController();
 }
 

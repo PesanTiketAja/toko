@@ -1,6 +1,7 @@
 {
     "modules": [
         "login",
+        "register",
         "product_list",
         "product_form",
         "product_update_form"
