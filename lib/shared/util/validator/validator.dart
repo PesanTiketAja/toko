@@ -28,6 +28,20 @@ class Validator {
     return null;
   }
 
+  static String? name(String? value) {
+  if (value!.isEmpty) return "This field is required";
+
+  // Anda bisa menyesuaikan aturan validasi nama sesuai kebutuhan aplikasi Anda.
+  // Contoh sederhana di bawah ini memeriksa apakah nama hanya terdiri dari huruf dan spasi.
+  final bool isValidName = RegExp(r'^[a-zA-Z ]+$').hasMatch(value);
+
+  if (!isValidName) {
+    return "This field is not in a valid name format";
+  }
+  return null;
+}
+
+
   static String? email(String? value) {
     if (value!.isEmpty) return "This field is required";
 
