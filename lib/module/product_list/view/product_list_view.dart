@@ -35,17 +35,47 @@ class ProductListView extends StatefulWidget {
               title: Text(item["product_name"]),
               subtitle: Text("${item["price"]}"),
               trailing: IconButton(
-                onPressed: () async => controller.doDelete(item["id"]),
+                onPressed: () async {
+                  bool? confirmDelete = await showDialog<bool>(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: const Text('Konfirmasi'),
+                        content: const Text(
+                            'Apakah Anda yakin ingin menghapus produk ini?'),
+                        actions: <Widget>[
+                          TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pop(false);
+                            },
+                            child: const Text('Batal'),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pop(true);
+                            },
+                            child: const Text('Hapus'),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+
+                  if (confirmDelete ?? false) {
+                    await controller.doDelete(item["id"]);
+                    controller.getProducts();
+                  }
+                },
                 icon: const Icon(
                   Icons.delete,
                   size: 24.0,
                 ),
               ),
-              onTap: () async => {
+              onTap: () async {
                 await Get.to(ProductFormView(
                   item: item,
-                )),
-                controller.getProducts(),
+                ));
+                controller.getProducts();
               },
             ),
           );
