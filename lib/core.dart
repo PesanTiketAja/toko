@@ -24,7 +24,8 @@ export 'package:hyper_ui/module/product_form/controller/product_form_controller.
 export 'package:hyper_ui/module/product_form/view/product_form_view.dart';
 export 'package:hyper_ui/module/product_list/controller/product_list_controller.dart';
 export 'package:hyper_ui/module/product_list/view/product_detail.dart';
-export 'package:hyper_ui/module/product_list/view/product_list_view.dart';
+// Remove the export of 'package:hyper_ui/module/product_list/view/product_list_view.dart'
+// export 'package:hyper_ui/module/product_list/view/product_list_view.dart';
 export 'package:hyper_ui/module/product_update_form/controller/product_update_form_controller.dart';
 export 'package:hyper_ui/module/product_update_form/view/product_update_form_view.dart';
 export 'package:hyper_ui/module/profile/controller/profile_controller.dart';

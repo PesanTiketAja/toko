@@ -7,6 +7,8 @@ class ProductListController extends State<ProductListView> {
   static late ProductListController instance;
   late ProductListView view;
 
+  get searchController => null;
+
   @override
   void initState() {
     instance = this;
@@ -18,7 +20,10 @@ class ProductListController extends State<ProductListView> {
   void dispose() => super.dispose();
 
   @override
-  Widget build(BuildContext context) => widget.build(context, this);
+  Widget build(BuildContext context) {
+    // Add your build logic here
+    return widget.build(context, this);
+  }
 
   List product = [];
   getProducts() async {
@@ -30,4 +35,6 @@ class ProductListController extends State<ProductListView> {
     await ProductService().deleteProduct(id);
     getProducts();
   }
+
+  void searchProducts() {}
 }

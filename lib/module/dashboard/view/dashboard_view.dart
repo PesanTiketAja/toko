@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hyper_ui/core.dart';
+import 'package:hyper_ui/module/product_list/view/product_list_view.dart';
 
 class DashboardView extends StatefulWidget {
   DashboardView({Key? key}) : super(key: key);
@@ -32,12 +33,6 @@ class DashboardView extends StatefulWidget {
                     "view": ProductListView(),
                     "icon": Icons.shopping_bag,
                     "color": Colors.green,
-                  },
-                  {
-                    "label": "Customer List",
-                    "view": ProductListView(),
-                    "icon": Icons.person,
-                    "color": Colors.blue,
                   },
                   // Add more items as needed
                 ];
