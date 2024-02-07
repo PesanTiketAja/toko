@@ -42,11 +42,17 @@ class LoginView extends StatefulWidget {
                 ),
                 QTextField(
                   label: "Password",
-                  obscure: true,
+                  obscure: controller.isPasswordObscure,
                   validator: Validator.required,
                   suffixIcon: Icons.password,
                   onChanged: (value) {
                     controller.password = value;
+                  },
+                ),
+                IconButton(
+                  icon: Icon(controller.isPasswordObscure ? Icons.visibility : Icons.visibility_off),
+                  onPressed: () {
+                    controller.togglePasswordVisibility();
                   },
                 ),
                 QButton(

@@ -6,10 +6,19 @@ class RegisterController extends State<RegisterView> {
   static late RegisterController instance;
   late RegisterView view;
 
+  bool isPasswordObscure = true;
+
+  void togglePasswordVisibility() {
+    setState(() {
+      isPasswordObscure = !isPasswordObscure;
+    });
+  }
+
   @override
   void initState() {
     instance = this;
     super.initState();
+    bool obscurePassword = true;
   }
 
   @override

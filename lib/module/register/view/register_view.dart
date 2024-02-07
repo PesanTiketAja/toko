@@ -5,8 +5,12 @@ import '../controller/register_controller.dart';
 class RegisterView extends StatefulWidget {
   const RegisterView({Key? key}) : super(key: key);
 
-  Widget build(context, RegisterController controller) {
-    controller.view = this;
+  @override
+  State<RegisterView> createState() => RegisterController();
+
+  Widget build(BuildContext context, RegisterController controller) {
+    bool isPasswordObscure = controller.isPasswordObscure; // Ambil status dari controller
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Registrasi"),
@@ -23,7 +27,6 @@ class RegisterView extends StatefulWidget {
                 QTextField(
                   label: "Name",
                   validator: Validator.name,
-                  // suffixIcon: Icons.name,
                   onChanged: (value) {
                     controller.name = value;
                   },
@@ -38,11 +41,17 @@ class RegisterView extends StatefulWidget {
                 ),
                 QTextField(
                   label: "Password",
-                  obscure: true,
+                  obscure: isPasswordObscure, // Gunakan status isPasswordObscure di sini
                   validator: Validator.required,
                   suffixIcon: Icons.password,
                   onChanged: (value) {
                     controller.password = value;
+                  },
+                ),
+                IconButton(
+                  icon: Icon(isPasswordObscure ? Icons.visibility : Icons.visibility_off),
+                  onPressed: () {
+                    controller.togglePasswordVisibility();
                   },
                 ),
                 QButton(
@@ -56,8 +65,4 @@ class RegisterView extends StatefulWidget {
       ),
     );
   }
-
-  @override
-  State<RegisterView> createState() => RegisterController();
 }
-

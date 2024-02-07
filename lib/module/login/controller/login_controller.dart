@@ -5,10 +5,20 @@ class LoginController extends State<LoginView> {
   static late LoginController instance;
   late LoginView view;
 
+    bool isPasswordObscure = true;
+
+  void togglePasswordVisibility() {
+    setState(() {
+      isPasswordObscure = !isPasswordObscure;
+    });
+  }
+
   @override
   void initState() {
     instance = this;
     super.initState();
+    bool obscurePassword = true;
+
   }
 
   @override
@@ -41,3 +51,4 @@ class LoginController extends State<LoginView> {
     Get.offAll(MainNavigationView());
   }
 }
+
