@@ -9,6 +9,7 @@ class LoginView extends StatefulWidget {
     controller.view = this;
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: const Text("Login"),
         actions: [
           // Tambahkan tombol untuk navigasi ke halaman register
@@ -63,4 +64,3 @@ class LoginView extends StatefulWidget {
   @override
   State<LoginView> createState() => LoginController();
 }
-

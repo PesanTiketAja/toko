@@ -9,37 +9,7 @@ class DashboardView extends StatefulWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Dashboard"),
-        actions: [
-          Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Center(
-              child: Badge(
-                label: Text(
-                  "6",
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-                child: Icon(MdiIcons.chatQuestion),
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Center(
-              child: Badge(
-                label: Text(
-                  "3",
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-                child: Icon(Icons.notifications),
-              ),
-            ),
-          ),
-        ],
+        title: Text("Dashboard Toko Sembako"),
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -47,16 +17,9 @@ class DashboardView extends StatefulWidget {
           child: Column(
             children: [
               Text(
-                "Token",
+                "Selamat Datang Di Toko Sembako Pak Asep",
                 style: TextStyle(
-                  fontSize: 12.0,
-                ),
-              ),
-              Text(
-                "${AuthService.token}",
-                style: TextStyle(
-                  fontSize: 12.0,
-                  fontWeight: FontWeight.bold,
+                  fontSize: 20.0,
                 ),
               ),
               const SizedBox(
@@ -65,13 +28,18 @@ class DashboardView extends StatefulWidget {
               Builder(builder: (context) {
                 List items = [
                   {
-                    "label": "Product List",
+                    "label": "Daftar Produk Sembako",
                     "view": ProductListView(),
+                    "icon": Icons.shopping_bag,
+                    "color": Colors.green,
                   },
-                  // {
-                  //   "label": "Customer List",
-                  //   "view": ProductListView(),
-                  // }
+                  {
+                    "label": "Customer List",
+                    "view": ProductListView(),
+                    "icon": Icons.person,
+                    "color": Colors.blue,
+                  },
+                  // Add more items as needed
                 ];
                 return GridView.builder(
                   padding: EdgeInsets.zero,
@@ -89,16 +57,36 @@ class DashboardView extends StatefulWidget {
                     return InkWell(
                       onTap: () => Get.to(item["view"]),
                       child: Container(
-                        color: Colors.orange,
+                        decoration: BoxDecoration(
+                          color: item["color"],
+                          borderRadius: BorderRadius.circular(10.0),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 2,
+                              blurRadius: 3,
+                              offset:
+                                  Offset(0, 2), // changes position of shadow
+                            ),
+                          ],
+                        ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
+                            Icon(
+                              item["icon"],
+                              size: 48.0,
+                              color: Colors.white,
+                            ),
+                            SizedBox(height: 8.0),
                             Text(
                               item["label"],
                               style: TextStyle(
                                 fontSize: 16.0,
                                 fontWeight: FontWeight.bold,
+                                color: Colors.white,
                               ),
+                              textAlign: TextAlign.center,
                             ),
                           ],
                         ),

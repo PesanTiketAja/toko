@@ -17,7 +17,14 @@ class MainNavigationView extends StatefulWidget {
         ),
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: controller.selectedIndex,
-          onTap: (newIndex) => controller.updateIndex(newIndex),
+          onTap: (newIndex) {
+            if (newIndex == 1) {
+              // Jika yang diklik adalah item "LOGOUT", tampilkan konfirmasi logout
+              _showLogoutConfirmationDialog(context);
+            } else {
+              controller.updateIndex(newIndex);
+            }
+          },
           items: [
             BottomNavigationBarItem(
               icon: Icon(
@@ -26,38 +33,49 @@ class MainNavigationView extends StatefulWidget {
               label: "Dashboard",
             ),
             BottomNavigationBarItem(
-              icon: Badge(
-                label: Text(
-                  "4",
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-                child: Icon(MdiIcons.table),
-              ),
-              label: "Order",
+              icon: Icon(Icons.exit_to_app), // Icon Logout
+              label: "LOGOUT",
             ),
-            BottomNavigationBarItem(
-              icon: Badge(
-                label: Text(
-                  "4",
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-                child: Icon(Icons.favorite),
-              ),
-              label: "Favorite",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.person,
-              ),
-              label: "Profile",
-            ),
+            // ... (kode lainnya)
           ],
         ),
       ),
+    );
+  }
+
+  // Method untuk menampilkan alert konfirmasi logout
+  void _showLogoutConfirmationDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Konfirmasi Logout"),
+          content: Text("Apakah Anda yakin ingin keluar?"),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                // Jika tombol "Batal" ditekan, tutup dialog
+                Navigator.of(context).pop();
+              },
+              child: Text("Batal"),
+            ),
+            TextButton(
+              onPressed: () {
+                // Jika tombol "Ya" ditekan, lakukan proses logout
+                // Anda dapat menambahkan logika logout di sini
+                // Contoh: hapus token autentikasi, bersihkan data sesi, dll.
+                // Kemudian tutup dialog dan navigasi ke layar login
+                Navigator.of(context).pop();
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => LoginView()),
+                );
+              },
+              child: Text("Ya"),
+            ),
+          ],
+        );
+      },
     );
   }
 

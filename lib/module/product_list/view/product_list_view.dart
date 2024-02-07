@@ -9,7 +9,7 @@ class ProductListView extends StatefulWidget {
     controller.view = this;
     return Scaffold(
       appBar: AppBar(
-        title: const Text("ProductList"),
+        title: const Text("Daftar Sembako"),
         actions: [
           CircleAvatar(
             child: Text(
@@ -33,7 +33,19 @@ class ProductListView extends StatefulWidget {
                 backgroundColor: Colors.grey[200],
               ),
               title: Text(item["product_name"]),
-              subtitle: Text("${item["price"]}"),
+              subtitle: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("${item["price"]}"),
+                  SizedBox(height: 4), // Spacer
+                  Text(
+                    "${item["description"]}", // Menampilkan description
+                    style: TextStyle(
+                      fontStyle: FontStyle.italic,
+                    ),
+                  ),
+                ],
+              ),
               trailing: IconButton(
                 onPressed: () async {
                   bool? confirmDelete = await showDialog<bool>(
